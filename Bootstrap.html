@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calcular diferenca de dias entre datas</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container text-center">
+    <h1>Calculadora de Diferença de Datas</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <label for="data1" class="form-label">Inicio</label>
+        <input type="date" id="data1" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <label for="data2" class="form-label">Fim</label>
+        <input type="date" id="data2" class="form-control">
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-success mt-3" onclick="calcular()">Calcular Diferença</button>
+  </div>
+    
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Título </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Conteúdo do Modal...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+function calcular() {
+  var date1 = new Date(document.getElementById("data1").value);
+  var date2 = new Date(document.getElementById("data2").value);
+
+  var diff = Math.abs(date2 - date1);
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  if (days + 0 > -1) {
+    document.querySelector(".modal-title").innerHTML = "Segue o resultado";
+    document.querySelector(".modal-body").innerHTML = "Diferença de " + days + " dias.";
+  } else {
+    document.querySelector(".modal-title").innerHTML = "Por favor, tente novamente";
+    document.querySelector(".modal-body").innerHTML = "Confirar os dados inseridos e tente novamente";
+  }
+  $('#exampleModal').modal('show');
+}
+
+</script>
+</body>
+</html>
